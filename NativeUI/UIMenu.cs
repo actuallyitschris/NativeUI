@@ -1010,7 +1010,7 @@ namespace NativeUI
         private string FormatDescription(string input)
         {
             int maxPixelsPerLine = 425 + WidthOffset;
-            int aggregatePixels = 0;
+            float aggregatePixels = 0;
             string output = "";
             string[] words = input.Split(' ');
             foreach (string word in words)
@@ -1020,12 +1020,12 @@ namespace NativeUI
                 if (aggregatePixels > maxPixelsPerLine)
                 {
                     output += "\n" + word + " ";
-                    aggregatePixels = offset + StringMeasurer.MeasureString(" ");
+                    aggregatePixels = offset + StringMeasurer.MeasureString(" ", Font.ChaletLondon, 1);
                 }
                 else
                 {
                     output += word + " ";
-                    aggregatePixels += StringMeasurer.MeasureString(" ");
+                    aggregatePixels += StringMeasurer.MeasureString(" ", Font.ChaletLondon, 1);
                 }
             }
             return output;
